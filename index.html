@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATELIER LUXE | Virtual Dressing Room & Haute Couture</title>
+  <meta name="description" content="Experience the future of luxury shopping. Real-time interactive virtual fitting room, AI outfit builder, and bespoke haute couture collection." />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/dressing-room.css">
+</head>
+<body>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand-identity">
+        <a href="#" class="brand-logo-text">ATELIER LUXE</a>
+        <span class="brand-subtext">Haute Couture • Virtual Studio</span>
+      </div>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <a href="#collections" class="nav-link">Collections</a>
+        <a href="#dressing-room-section" class="nav-link highlight">Virtual Fitting Room</a>
+        <a href="#curated-looks" class="nav-link">AI Curations</a>
+        <a href="#lookbook-section" class="nav-link">Lookbook</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="action-icon-btn" data-action="open-cart" id="header-bag-btn" aria-label="Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 01-8 0"></path>
+          </svg>
+          <span class="cart-count-badge" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Editorial Showcase -->
+  <section class="hero-editorial-section">
+    <div class="hero-background-wrapper">
+      <img src="assets/images/hero_banner.jpg" alt="Atelier Luxe Haute Couture Banner" class="hero-background-img" />
+      <div class="hero-overlay-gradient"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="hero-pulse-dot"></span>
+        <span>Virtual Dressing Room 2.0 • Paris Fashion Week</span>
+      </div>
+
+      <h1 class="hero-title">
+        The Future of Fitting.<br />
+        <span>Try Before You Buy.</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Immerse yourself in our real-time interactive dressing studio. Tailor your avatar, mix-and-match haute couture silhouettes, and experience liquid silk and Italian leather drape directly on your screen.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#dressing-room-section" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10a2 2 0 002 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z"></path>
+          </svg>
+          Enter Virtual Fitting Room
+        </a>
+        <a href="#collections" class="btn-secondary">
+          Explore SS26 Collection
+        </a>
+      </div>
+
+      <div class="hero-metrics-bar">
+        <div class="metric-item">
+          <span class="metric-number">99.4%</span>
+          <span class="metric-label">Fit Accuracy</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-number">Real-Time</span>
+          <span class="metric-label">Garment Draping</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-number">15% Off</span>
+          <span class="metric-label">Complete Look Bundles</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       CORE FEATURE: Interactive Virtual Dressing Room Studio
+       ======================================================== -->
+  <section class="dressing-studio-section" id="dressing-room-section">
+    <div class="dressing-studio-container">
+      
+      <div class="section-head">
+        <span class="section-tag">Interactive Styling Engine</span>
+        <h2 class="section-title">Virtual Dressing Room</h2>
+        <p class="section-desc">
+          Customize your model silhouette, swap bespoke garments, switch runway lighting, and test fit tension in real-time.
+        </p>
+      </div>
+
+      <div class="studio-main-grid">
+        
+        <!-- Left: Interactive Mannequin Stage -->
+        <div class="fitting-stage-wrapper">
+          <div class="stage-top-bar">
+            <div class="stage-studio-brand">Atelier 3D Fitting Suite</div>
+            <div class="stage-quick-actions">
+              <button class="stage-icon-action" id="btn-ai-stylist" title="Let AI suggest an outfit">
+                <span>✨ AI Stylist</span>
+              </button>
+              <button class="stage-icon-action" id="btn-reset-mannequin" title="Clear garments">
+                <span>↺ Clear</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Viewport with Backdrops and Mannequin -->
+          <div class="mannequin-viewport">
+            <div id="dressing-lighting-backdrop" class="dressing-lighting-backdrop lighting-runway"></div>
+            
+            <div class="mannequin-render-box" id="mannequin-container">
+              <!-- Rendered via dressing-room.js -->
+            </div>
+
+            <!-- Floating Stage Controls -->
+            <div class="stage-floating-controls">
+              <div class="lighting-pill-selector" title="Switch Studio Lighting">
+                <button class="btn-lighting-pill active" data-lighting="runway">Runway</button>
+                <button class="btn-lighting-pill" data-lighting="golden">Golden</button>
+                <button class="btn-lighting-pill" data-lighting="studio">Studio</button>
+                <button class="btn-lighting-pill" data-lighting="neon">Neon</button>
+              </div>
+
+              <button class="btn-snapshot-trigger" id="btn-snapshot" title="Capture & export high fashion card">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"></path>
+                  <circle cx="12" cy="13" r="4"></circle>
+                </svg>
+                <span>Snapshot</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Avatar Customization Controls Bar -->
+          <div class="avatar-customizer-bar">
+            <!-- Skin Tone Picker -->
+            <div class="customizer-row">
+              <span class="customizer-label">Complexion</span>
+              <div class="swatch-group">
+                <button class="skin-tone-btn" data-skintone="#f9dfd5" style="background:#f9dfd5;" title="Porcelain"></button>
+                <button class="skin-tone-btn" data-skintone="#e8b98f" style="background:#e8b98f;" title="Honey"></button>
+                <button class="skin-tone-btn active" data-skintone="#c89b6c" style="background:#c89b6c;" title="Olive"></button>
+                <button class="skin-tone-btn" data-skintone="#8d5524" style="background:#8d5524;" title="Deep Warm"></button>
+                <button class="skin-tone-btn" data-skintone="#3e2723" style="background:#3e2723;" title="Espresso"></button>
+              </div>
+            </div>
+
+            <!-- Hair Style & Color -->
+            <div class="customizer-row">
+              <span class="customizer-label">Coiffure</span>
+              <div class="hair-style-group">
+                <button class="hair-toggle-btn active" data-hairstyle="bun">Bun</button>
+                <button class="hair-toggle-btn" data-hairstyle="bob">Bob</button>
+                <button class="hair-toggle-btn" data-hairstyle="waves">Waves</button>
+                <button class="hair-toggle-btn" data-hairstyle="sculpted">Afro</button>
+              </div>
+              <div class="swatch-group">
+                <button class="hair-color-btn active" data-haircolor="#121212" style="background:#121212;" title="Jet Noir"></button>
+                <button class="hair-color-btn" data-haircolor="#e6dcbf" style="background:#e6dcbf;" title="Platinum"></button>
+                <button class="hair-color-btn" data-haircolor="#3a2820" style="background:#3a2820;" title="Chestnut"></button>
+                <button class="hair-color-btn" data-haircolor="#8e3820" style="background:#8e3820;" title="Auburn"></button>
+              </div>
+            </div>
+
+            <!-- Size Selector -->
+            <div class="customizer-row">
+              <span class="customizer-label">Silhouette Size</span>
+              <div class="size-pill-group">
+                <button class="size-toggle-btn" data-size="XS">XS</button>
+                <button class="size-toggle-btn active" data-size="S">S</button>
+                <button class="size-toggle-btn" data-size="M">M</button>
+                <button class="size-toggle-btn" data-size="L">L</button>
+                <button class="size-toggle-btn" data-size="XL">XL</button>
+              </div>
+            </div>
+
+            <!-- Fit Tension & Drape Meter -->
+            <div id="fit-tension-meter">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Equipped Outfit Overview & Wardrobe Rail -->
+        <div class="wardrobe-panel-wrapper">
+          
+          <!-- Currently Equipped Look -->
+          <div class="equipped-overview-card">
+            <div class="equipped-card-header">
+              <h3 class="equipped-card-title">Currently Draped Silhouette</h3>
+              <span class="tag-pill" id="lookbook-status-tag">Bespoke Fit</span>
+            </div>
+
+            <div class="equipped-chips-list" id="equipped-chips">
+              <!-- Populated dynamically via dressing-room.js -->
+            </div>
+
+            <div class="equipped-footer-actions">
+              <div id="total-look-price">
+                <!-- Total pricing with discount badge -->
+              </div>
+              <button class="btn-add-look-cart" id="btn-add-look-cart">
+                Add Complete Look to Bag
+              </button>
+            </div>
+          </div>
+
+          <!-- Wardrobe Garment Selector Rail -->
+          <div class="wardrobe-selector-box">
+            <div class="wardrobe-tabs-bar" id="wardrobe-tabs">
+              <button class="wardrobe-tab active" data-category="all">All Pieces</button>
+              <button class="wardrobe-tab" data-category="outerwear">Outerwear</button>
+              <button class="wardrobe-tab" data-category="dresses">Dresses</button>
+              <button class="wardrobe-tab" data-category="tops">Tops</button>
+              <button class="wardrobe-tab" data-category="bottoms">Bottoms</button>
+              <button class="wardrobe-tab" data-category="shoes">Shoes</button>
+              <button class="wardrobe-tab" data-category="accessories">Accessories</button>
+            </div>
+
+            <div class="wardrobe-rail-grid" id="wardrobe-grid">
+              <!-- Rendered via dressing-room.js -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       E-Commerce Collections Catalog Section
+       ======================================================== -->
+  <section class="section-wrapper" id="collections">
+    <div class="section-head">
+      <span class="section-tag">Haute Couture Collection</span>
+      <h2 class="section-title">Curated Runway Catalog</h2>
+      <p class="section-desc">
+        Explore handcrafted garments designed with architectural cuts and peerless textiles. Click "Virtual Try-On" on any garment to immediately drape it onto your mannequin.
+      </p>
+    </div>
+
+    <!-- Filters & Search Toolbar -->
+    <div class="catalog-toolbar">
+      <div class="category-pills" id="catalog-category-filters">
+        <button class="filter-pill active" data-category="all">All Styles</button>
+        <button class="filter-pill" data-category="outerwear">Outerwear</button>
+        <button class="filter-pill" data-category="dresses">Evening Dresses</button>
+        <button class="filter-pill" data-category="tops">Tops & Knits</button>
+        <button class="filter-pill" data-category="bottoms">Trousers & Skirts</button>
+        <button class="filter-pill" data-category="shoes">Footwear</button>
+        <button class="filter-pill" data-category="accessories">Leather & Accs</button>
+      </div>
+
+      <div class="catalog-search-sort">
+        <div class="search-box-wrapper">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="catalog-search-input" placeholder="Search silk, wool, trench..." />
+        </div>
+
+        <select id="catalog-sort-select" class="sort-dropdown">
+          <option value="featured">Featured Runway</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+        </select>
+
+        <div class="price-filter-wrapper">
+          <span>Max: <strong id="catalog-price-display">$1500</strong></span>
+          <input type="range" id="catalog-price-range" min="200" max="1500" step="50" value="1500" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid" id="catalog-products-grid">
+      <!-- Populated via app.js -->
+    </div>
+  </section>
+
+  <!-- ========================================================
+       Curated Looks & AI Styling Section
+       ======================================================== -->
+  <section class="section-wrapper" id="curated-looks" style="border-top: 1px solid var(--border-subtle);">
+    <div class="section-head">
+      <span class="section-tag">Editorial Directives</span>
+      <h2 class="section-title">AI Stylist Curations</h2>
+      <p class="section-desc">
+        Complete lookbooks pre-composed by our algorithmic fashion director for red carpet galas, Milanese boardroom power, and midnight avant-garde.
+      </p>
+    </div>
+
+    <div class="products-grid">
+      <div class="product-card" onclick="window.dressingRoom.clearAllGarments(); window.dressingRoom.equipGarment('dress-emerald-02'); window.dressingRoom.equipGarment('heels-stiletto-09'); window.dressingRoom.equipGarment('bag-crossbody-11'); window.dressingRoom.setLighting('runway'); document.getElementById('dressing-room-section').scrollIntoView({behavior:'smooth'});">
+        <div class="product-card-media">
+          <img src="assets/images/product_dress.jpg" alt="Met Gala Red Carpet" />
+          <span class="product-badge">Editorial Set</span>
+        </div>
+        <div class="product-card-content">
+          <span class="product-category-tag">HIGH GLAMOUR</span>
+          <h3 class="product-title">Met Gala Red Carpet</h3>
+          <p class="product-tagline">Mulberry silk charmeuse gown, metallic gold stilettos, and Italian calfskin clutch.</p>
+          <div class="product-primary-action">
+            <button class="btn-primary" style="width: 100%;">Drape Full Set on Mannequin</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" onclick="window.dressingRoom.clearAllGarments(); window.dressingRoom.equipGarment('blazer-obsidian-01'); window.dressingRoom.equipGarment('knit-cream-04'); window.dressingRoom.equipGarment('trouser-pleated-05'); window.dressingRoom.equipGarment('boots-combat-08'); window.dressingRoom.equipGarment('accessory-sunglasses-10'); window.dressingRoom.setLighting('studio'); document.getElementById('dressing-room-section').scrollIntoView({behavior:'smooth'});">
+        <div class="product-card-media">
+          <img src="assets/images/product_blazer.jpg" alt="Parisian Power Tailoring" />
+          <span class="product-badge">Editorial Set</span>
+        </div>
+        <div class="product-card-content">
+          <span class="product-category-tag">MODERN TAILORING</span>
+          <h3 class="product-title">Parisian Power Tailoring</h3>
+          <p class="product-tagline">Obsidian satin lapel blazer, Mongolian cashmere, pleated trousers, and shield eyewear.</p>
+          <div class="product-primary-action">
+            <button class="btn-primary" style="width: 100%;">Drape Full Set on Mannequin</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" onclick="window.dressingRoom.clearAllGarments(); window.dressingRoom.equipGarment('coat-caramel-03'); window.dressingRoom.equipGarment('knit-cream-04'); window.dressingRoom.equipGarment('trouser-pleated-05'); window.dressingRoom.equipGarment('boots-combat-08'); window.dressingRoom.equipGarment('bag-crossbody-11'); window.dressingRoom.setLighting('golden'); document.getElementById('dressing-room-section').scrollIntoView({behavior:'smooth'});">
+        <div class="product-card-media">
+          <img src="assets/images/product_trench.jpg" alt="Milano Street Luxury" />
+          <span class="product-badge">Editorial Set</span>
+        </div>
+        <div class="product-card-content">
+          <span class="product-category-tag">CONTEMPORARY</span>
+          <h3 class="product-title">Milano Street Luxury</h3>
+          <p class="product-tagline">Caramel lambskin trench coat, cashmere mockneck, pleated trousers, and monolith boots.</p>
+          <div class="product-primary-action">
+            <button class="btn-primary" style="width: 100%;">Drape Full Set on Mannequin</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       User's Saved Lookbook Section
+       ======================================================== -->
+  <section class="section-wrapper" id="lookbook-section" style="border-top: 1px solid var(--border-subtle);">
+    <div class="section-head">
+      <span class="section-tag">Private Archive</span>
+      <h2 class="section-title">My Saved Lookbook</h2>
+      <p class="section-desc">
+        Outfits you composed in the virtual fitting room. Re-equip them on your mannequin with a single tap.
+      </p>
+    </div>
+
+    <div class="lookbook-grid" id="lookbook-grid">
+      <!-- Populated via app.js -->
+    </div>
+  </section>
+
+  <!-- ========================================================
+       Shopping Cart Slide-Over Drawer
+       ======================================================== -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Bag">
+    <div class="cart-drawer-header">
+      <h3>Your Atelier Bag (<span class="cart-count-badge">0</span>)</h3>
+      <button class="modal-close-btn" id="btn-close-cart" style="position: static;" aria-label="Close Bag">✕</button>
+    </div>
+
+    <div class="shipping-progress-banner">
+      <div class="shipping-progress-bar">
+        <div class="shipping-progress-fill" id="shipping-progress-fill"></div>
+      </div>
+      <p class="shipping-threshold-text" id="shipping-threshold-text">
+        Complimentary express white-glove shipping on orders over $250.
+      </p>
+    </div>
+
+    <div class="cart-items-scroll-area">
+      <div id="cart-empty-state" class="empty-equipped-notice" style="display: none; padding: 4rem 1rem;">
+        <p style="font-size: 1rem; margin-bottom: 1rem;">Your shopping bag is currently empty.</p>
+        <button class="btn-primary" onclick="window.cart.closeDrawer();">Explore Collections</button>
+      </div>
+      <div id="cart-items-list">
+        <!-- Rendered by cart.js -->
+      </div>
+    </div>
+
+    <div class="cart-drawer-footer">
+      <div class="promo-code-box">
+        <input type="text" id="cart-promo-input" placeholder="Promo code (e.g. VOGUE15)" />
+        <button id="btn-apply-promo">Apply</button>
+      </div>
+
+      <div class="cart-financials">
+        <div class="fin-row">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">$0</span>
+        </div>
+        <div class="fin-row discount" id="cart-discount-row" style="display: none;">
+          <span>Lookbook Discount</span>
+          <span id="cart-discount-amount">-$0</span>
+        </div>
+        <div class="fin-row total-row">
+          <span>Grand Total</span>
+          <span id="cart-grand-total">$0</span>
+        </div>
+      </div>
+
+      <button class="btn-checkout-drawer" id="btn-cart-checkout">
+        Proceed to Express Checkout
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========================================================
+       Product Detail Modal
+       ======================================================== -->
+  <div class="modal-backdrop" id="product-detail-modal">
+    <div class="modal-container">
+      <button class="modal-close-btn" aria-label="Close Modal">✕</button>
+      <div id="product-modal-body">
+        <!-- Dynamic content via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       Express Checkout Modal
+       ======================================================== -->
+  <div class="modal-backdrop" id="checkout-modal">
+    <div class="modal-container" style="max-width: 960px;">
+      <button class="modal-close-btn" aria-label="Close Checkout">✕</button>
+      <div id="checkout-modal-body">
+        <!-- Dynamic checkout flow via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       Snapshot Look Modal
+       ======================================================== -->
+  <div class="modal-backdrop" id="snapshot-modal">
+    <div class="modal-container" style="max-width: 500px; background: #0c0d10;">
+      <button class="modal-close-btn" onclick="window.dressingRoom.closeSnapshotModal()">✕</button>
+      <div id="snapshot-modal-body" style="padding: 2rem;">
+        <!-- Snapshot content via dressing-room.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Center -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>ATELIER LUXE</h4>
+        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1rem;">
+          Pioneering the synthesis of Parisian haute couture and browser-native virtual fitting engineering.
+        </p>
+        <span style="color: var(--accent-gold); font-size: 0.8rem; letter-spacing: 0.1em;">PARIS • MILAN • NEW YORK</span>
+      </div>
+
+      <div class="footer-col">
+        <h4>Virtual Fitting</h4>
+        <ul class="footer-links">
+          <li><a href="#dressing-room-section">Mannequin Studio</a></li>
+          <li><a href="#curated-looks">AI Curated Looks</a></li>
+          <li><a href="#dressing-room-section">Fit Tension Engine</a></li>
+          <li><a href="#lookbook-section">Private Lookbook</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Bespoke Client Services</h4>
+        <ul class="footer-links">
+          <li><a href="#collections">Complimentary Delivery</a></li>
+          <li><a href="#collections">30-Day White-Glove Returns</a></li>
+          <li><a href="#collections">NFC Authenticity Verification</a></li>
+          <li><a href="#collections">Private Stylist Consultations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>VIP Atelier Circle</h4>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
+          Subscribe for private runway access, seasonal lookbooks, and 15% off your first virtual styling.
+        </p>
+        <div style="display: flex; gap: 0.5rem;">
+          <input type="email" placeholder="Your VIP email" style="padding: 0.6rem 0.8rem; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 4px; color: #fff; font-size: 0.8rem; flex-grow: 1;" />
+          <button class="btn-primary" style="padding: 0.6rem 1rem; font-size: 0.75rem;">Join</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 ATELIER LUXE Inc. All rights reserved.</p>
+      <p>Designed for High Fashion & Virtual Fitting Innovation.</p>
+    </div>
+  </footer>
+
+  <!-- Application Logic Scripts -->
+  <script src="scripts/products.js"></script>
+  <script src="scripts/cart.js"></script>
+  <script src="scripts/dressing-room.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
