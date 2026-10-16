@@ -4,8 +4,6 @@ A luxury, interactive e-commerce web application featuring a real-time virtual f
 
 ![ATELIER LUXE Banner](assets/images/hero_banner.jpg)
 
----
-
 ## ✨ Features
 
 - **Interactive Virtual Fitting Room**:
