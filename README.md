@@ -4,8 +4,6 @@ A luxury, interactive e-commerce web application featuring a real-time virtual f
 
 ![ATELIER LUXE Banner](assets/images/hero_banner.jpg)
 
-## ✨ Features
-
 - **Interactive Virtual Fitting Room**:
   - Customizable 2D/SVG model (skin tones, hair styles, poses).
   - Multi-layer garment dressing engine (Tops, Bottoms, Outerwear, Dresses, Shoes, Accessories).
